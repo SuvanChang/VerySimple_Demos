@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>move</title>
+	<style type="text/css">
+		body{
+			background: black;
+		}
+		#cir{
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background: blue;
+			margin:200px auto;
+		}
+		#ori{
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background: yellow;
+			position: absolute;
+			background: red;
+			top: 200px;
+			left: 49.25%;
+		}
+	</style>
+</head>
+<body>
+	<div id="cir"></div>
+	<div id="ori"></div>
+	<script type="text/javascript">
+		var cir = document.getElementById('cir');
+		var rx = 120;
+		var ry = 160;
+		var pi = Math.PI;
+		var theta = 0;
+		var moveCir = function(){
+			theta += 2;
+			var x = rx*Math.cos(theta*2*pi/360);
+			var y = ry*Math.sin(theta*2*pi/360);
+			cir.style.transform = 'translate('+x+'px,'+y+'px)';
+			var af = requestAnimationFrame(moveCir);
+			if(theta>=360)theta=0;
+		}
+		moveCir();
+	</script>
+</body>
+</html>
